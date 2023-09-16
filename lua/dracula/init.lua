@@ -4,7 +4,7 @@ local cmd = vim.cmd
 local nvim_set_hl = vim.api.nvim_set_hl
 local tbl_deep_extend = vim.tbl_deep_extend
 
----@class DraculaConfig
+---@class drunkenDraculaConfig
 ---@field italic_comment boolean
 ---@field transparent_bg boolean
 ---@field show_end_of_buffer boolean
@@ -17,9 +17,9 @@ local DEFAULT_CONFIG = {
    transparent_bg = false,
    show_end_of_buffer = false,
    lualine_bg_color = nil,
-   colors = require("dracula.palette"),
+   colors = require("drunken-dracula.palette"),
    overrides = {},
-   theme = 'dracula'
+   theme = "drunken-dracula",
 }
 
 local TRANSPARENTS = {
@@ -28,7 +28,7 @@ local TRANSPARENTS = {
    "NvimTreeNormal",
    "NvimTreeVertSplit",
    "NeoTreeNormal",
-   "NeoTreeNormalNC"
+   "NeoTreeNormalNC",
 }
 
 local function apply_term_colors(colors)
@@ -63,12 +63,12 @@ local function override_groups(groups, overrides)
    return groups
 end
 
----apply dracula colorscheme
----@param configs DraculaConfig
+---apply drunken-dracula colorscheme
+---@param configs drunkenDraculaConfig
 local function apply(configs)
    local colors = configs.colors
    apply_term_colors(colors)
-   local groups = require("dracula.groups").setup(configs)
+   local groups = require("drunken-dracula.groups").setup(configs)
 
    -- apply transparents
    if configs.transparent_bg then
@@ -89,20 +89,20 @@ local function apply(configs)
    end
 end
 
----@type DraculaConfig
+---@type drunkenDraculaConfig
 local user_configs = {}
 
---- get dracula configs
----@return DraculaConfig
+--- get drunken-dracula configs
+---@return drunkenDraculaConfig
 local function get_configs()
    local configs = DEFAULT_CONFIG
 
-   if g.colors_name == 'dracula-soft' then
-      configs.theme = 'dracula-soft'
-      configs.colors = require('dracula.palette-soft')
-   elseif g.colors_name == 'dracula' then
-      configs.theme = 'dracula'
-      configs.colors = require('dracula.palette')
+   if g.colors_name == "drunken-dracula-soft" then
+      configs.theme = "drunken-dracula-soft"
+      configs.colors = require("drunken-dracula.palette-soft")
+   elseif g.colors_name == "drunken-dracula" then
+      configs.theme = "drunken-dracula"
+      configs.colors = require("drunken-dracula.palette")
    end
 
    configs = tbl_deep_extend("force", configs, user_configs)
@@ -110,19 +110,19 @@ local function get_configs()
    return configs
 end
 
----setup dracula colorscheme
----@param configs DraculaConfig?
+---setup drunken-dracula colorscheme
+---@param configs drunkenDraculaConfig?
 local function setup(configs)
    if type(configs) == "table" then
-      user_configs = configs --[[@as DraculaConfig]]
+      user_configs = configs --[[@as drunkenDraculaConfig]]
    end
 end
 
----load dracula colorscheme
+---load drunken-dracula colorscheme
 ---@param theme string?
 local function load(theme)
    if vim.version().minor < 7 then
-      vim.notify_once("dracula.nvim: you must use neovim 0.7 or higher")
+      vim.notify_once("drunken-dracula.nvim: you must use neovim 0.7 or higher")
       return
    end
 
@@ -137,7 +137,7 @@ local function load(theme)
 
    o.background = "dark"
    o.termguicolors = true
-   g.colors_name = theme or 'dracula'
+   g.colors_name = theme or "drunken-dracula"
 
    apply(get_configs())
 end
@@ -146,5 +146,7 @@ return {
    load = load,
    setup = setup,
    configs = get_configs,
-   colors = function() return get_configs().colors end,
+   colors = function()
+      return get_configs().colors
+   end,
 }
