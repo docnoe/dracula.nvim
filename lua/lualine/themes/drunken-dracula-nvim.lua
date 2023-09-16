@@ -32,8 +32,8 @@ local replace = {
 }
 
 local insert = {
-   a = { fg = colors.black, bg = colors.green, gui = "bold" },
-   b = { fg = colors.green, bg = bg },
+   a = { fg = colors.black, bg = colors.cyan, gui = "bold" },
+   b = { fg = colors.cyan, bg = bg },
    c = { fg = colors.white, bg = bg },
 }
 
