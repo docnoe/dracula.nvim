@@ -125,6 +125,15 @@ local function setup(configs)
       WarningMsg = { fg = colors.yellow },
       WildMenu = { fg = colors.black, bg = colors.white },
 
+      NoiceCmdline = { fg = colors.fg },
+      NoiceCmdlineIcon = { fg = colors.cyan },
+      NoiceCmdlineIconSearch = { fg = colors.yellow },
+      NoiceCmdlinePopupBorder = { fg = colors.purple },
+      NoiceCmdlinePopupBorderSearch = { fg = colors.cyan },
+      NoiceConfirmBorder = { fg = colors.green },
+      NoiceMini = { fg = colors.white, blend = 0 },
+      NoiceFormatProgressDone = { bg = colors.cyan },
+
       EndOfBuffer = endOfBuffer,
 
       -- TreeSitter
