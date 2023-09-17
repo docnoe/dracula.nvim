@@ -287,9 +287,9 @@ local function setup(configs)
       GitSignsCurrentLineBlame = { fg = colors.white },
 
       -- Telescope
-      TelescopePromptBorder = { fg = colors.comment },
-      TelescopeResultsBorder = { fg = colors.comment },
-      TelescopePreviewBorder = { fg = colors.comment },
+      TelescopePromptBorder = { fg = colors.purple },
+      TelescopeResultsBorder = { fg = colors.purple },
+      TelescopePreviewBorder = { fg = colors.purple },
       TelescopeSelection = { fg = colors.white, bg = colors.selection },
       TelescopeMultiSelection = { fg = colors.purple, bg = colors.selection },
       TelescopeNormal = { fg = colors.fg, bg = colors.bg },
@@ -297,6 +297,8 @@ local function setup(configs)
       TelescopePromptPrefix = { fg = colors.purple },
       TelescopeResultsDiffDelete = { fg = colors.red },
       TelescopeResultsDiffChange = { fg = colors.cyan },
+      TelescopePreviewTitle = { fg = colors.cyan },
+      TelescopePromptTitle = { fg = colors.cyan },
       TelescopeResultsDiffAdd = { fg = colors.green },
 
       -- NvimTree
